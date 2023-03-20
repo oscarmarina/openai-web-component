@@ -1,0 +1,179 @@
+{
+  "name": "@blockquote/openai-web-component",
+  "version": "1.0.0-rc.1",
+  "description": "Webcomponent openai-web-component following open-wc recommendations",
+  "keywords": [
+    "lit",
+    "web-component",
+    "lit-element"
+  ],
+  "license": "MIT",
+  "author": "openai-web-component",
+  "type": "module",
+  "exports": {
+    ".": {
+      "default": "./index.js"
+    },
+    "./package.json": "./package.json",
+    "./src/OpenaiWebComponent.js": {
+      "default": "./src/OpenaiWebComponent.js"
+    },
+    "./define/openai-web-component.js": {
+      "default": "./define/openai-web-component.js"
+    },
+    "./index.js": {
+      "default": "./index.js"
+    },
+    "./src/styles/openai-web-component-styles.css.js": {
+      "default": "./src/styles/openai-web-component-styles.css.js"
+    }
+  },
+  "main": "index.js",
+  "module": "index.js",
+  "files": [
+    "/define/",
+    "/src/",
+    "index.js",
+    "!/**/*.scss"
+  ],
+  "scripts": {
+    "analyze": "cem analyze --litelement --globs \"{src,define}/**/*.{js,ts}\" \"index.js\"",
+    "build": "echo \"This is not a TypeScript project, so no need to build.\"",
+    "dev:vite": "vite build",
+    "format": "npm run format:eslint && npm run format:prettier && npm run format:stylelint",
+    "format:eslint": "eslint \"**/*.{js,ts,html}\" --fix --ignore-path .eslintignore",
+    "format:prettier": "prettier \"**/*.{js,ts,json,html}\" --write --ignore-path .eslintignore",
+    "format:stylelint": "stylelint \"**/*.{scss,css}\" --fix --allow-empty-input --ignore-path .eslintignore",
+    "postinstall": "npm run sort:package",
+    "lint": "npm run lint:eslint && npm run lint:prettier && npm run lint:stylelint",
+    "lint:eslint": "eslint \"**/*.{js,ts,html}\" --ignore-path .eslintignore",
+    "lint:prettier": "prettier \"**/*.{js,ts,json,html}\" --check --ignore-path .eslintignore",
+    "lint:stylelint": "stylelint \"**/*.{scss,css}\" --allow-empty-input --ignore-path .eslintignore",
+    "preview:vite": "vite preview",
+    "sass:watch": "sass-style-template",
+    "sort:package": "npx sort-package-json",
+    "start": "concurrently -k -r \"npm:sass:watch\" \"npm:vite\"",
+    "test": "wtr --coverage",
+    "test:watch": "wtr --watch",
+    "vite": "vite"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{js,ts,html}": [
+      "npm run format:eslint"
+    ],
+    "**/*.{js,ts,json,html}": [
+      "npm run format:prettier"
+    ],
+    "**/*.{scss,css}": [
+      "npm run format:stylelint"
+    ]
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "overrides": [
+      {
+        "files": "*.{scss,css}",
+        "options": {
+          "printWidth": 280,
+          "singleQuote": false
+        }
+      }
+    ]
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": "latest"
+    },
+    "plugins": [
+      "log-filenames"
+    ],
+    "extends": [
+      "@open-wc",
+      "prettier"
+    ],
+    "rules": {
+      "class-methods-use-this": "off",
+      "no-unused-expressions": [
+        "error",
+        {
+          "allowShortCircuit": true,
+          "allowTernary": true
+        }
+      ],
+      "object-curly-newline": "off",
+      "import/extensions": [
+        "error",
+        "always",
+        {
+          "ignorePackages": true
+        }
+      ],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          "devDependencies": [
+            "**/test/**/*.{js,ts}",
+            "**/*.config.{js,ts,mjs,cjs}",
+            "**/*.conf.{js,ts,mjs,cjs}"
+          ]
+        }
+      ],
+      "import/no-unresolved": "off",
+      "import/prefer-default-export": "off",
+      "lit-a11y/no-autofocus": "off"
+    }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard-scss",
+    "rules": {
+      "custom-property-pattern": null,
+      "no-duplicate-selectors": null,
+      "color-function-notation": null,
+      "alpha-value-notation": null
+    }
+  },
+  "dependencies": {
+    "lit": "^2.5.0",
+    "openai": "^3.2.0"
+  },
+  "devDependencies": {
+    "@blockquote/coverage-table-reporter": "^1.0.0",
+    "@blockquote/rollup-plugin-total-bundlesize": "^1.0.0",
+    "@blockquote/sass-style-template": "^3.0.1",
+    "@custom-elements-manifest/analyzer": "^0.6.9",
+    "@open-wc/eslint-config": "^9.2.2",
+    "@open-wc/testing": "^3.1.7",
+    "@ungap/global-this": "^0.4.4",
+    "@web/dev-server": "^0.1.36",
+    "@web/rollup-plugin-html": "^1.11.0",
+    "@web/test-runner": "^0.15.1",
+    "@web/test-runner-playwright": "^0.9.0",
+    "@webcomponents/shadycss": "^1.11.1",
+    "@webcomponents/webcomponentsjs": "^2.7.0",
+    "concurrently": "^7.6.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-log-filenames": "^1.0.6",
+    "husky": "^4.3.8",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4",
+    "rollup-plugin-copy": "^3.4.0",
+    "sort-package-json": "^2.4.1",
+    "stylelint": "^15.2.0",
+    "stylelint-config-standard-scss": "^7.0.1",
+    "tiny-array-flat-polyfill": "^0.2.1",
+    "vite": "^4.1.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "customElements": "custom-elements.json"
+}

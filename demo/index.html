@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Demo - openai-web-component</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" />
+    <meta name="description" content="openai-web-component" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --typeface-plain: 'IBM Plex Sans', serif;
+        --typeface-brand: monospace;
+        --typeface-weight-regular: 400;
+        --typeface-line-height: 1.5rem;
+        --typeface-size: 1rem;
+        --typeface-tracking: 0.009rem;
+        --space-size: calc(8 / 16 * 1rem);
+        --primary: #f5f5f5;
+        --surface: #fff;
+        --on-primary: #201f23;
+        --on-surface: #bcbcbc;
+        --outline-primary: #e7e7e7;
+        /* --_ */
+        --_label-text-type: var(--typeface-weight-regular) var(--typeface-size) /
+          var(--typeface-line-height) var(--typeface-plain);
+
+        box-sizing: border-box;
+      }
+
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
+
+      html,
+      body {
+        block-size: calc(100% + env(safe-area-inset-top) + env(safe-area-inset-bottom));
+      }
+
+      html {
+        font: var(--_label-text-type);
+      }
+
+      body {
+        margin: 0;
+        padding-block-start: min(calc(var(--space-size) * 3), 16vh);
+      }
+    </style>
+  </head>
+  <body>
+    <script type="importmap">
+      {
+        "imports": {
+          "lit": "/node_modules/lit/index.js",
+          "lit/": "/node_modules/lit/",
+          "@lit/reactive-element": "/node_modules/@lit/reactive-element/reactive-element.js",
+          "@lit/reactive-element/": "/node_modules/@lit/reactive-element/",
+          "lit-html": "/node_modules/lit-html/lit-html.js",
+          "lit-html/": "/node_modules/lit-html/",
+          "lit-element": "/node_modules/lit-element/index.js",
+          "lit-element/": "/node_modules/lit-element/"
+        }
+      }
+    </script>
+    <script type="module">
+      import { html, render } from 'lit';
+      import '../define/openai-web-component.js';
+
+      render(html`<openai-web-component modifier="by Tim Burton, digital art"></openai-web-component>`, document.querySelector('body'));
+    </script>
+  </body>
+</html>

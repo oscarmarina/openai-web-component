@@ -1,0 +1,18 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "skipFiles": ["<node_internals>/**"],
+      "cwd": "${workspaceFolder}/nodejs_env/",
+      "program": "${workspaceFolder}/nodejs_env/index.js",
+      "args": ["zeus"],
+      "env": {
+        "OPENAI_API_KEY": "${env:OPENAI_API_KEY}"
+      }
+    }
+  ],
+  "runtimeExecutable": "node"
+}
